@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sohini.Banerjee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden; /* Prevent horizontal scrollbars from blobs */
+      cursor: none !important; /* Hide default cursor */
+    }
+
+    /* Custom scrollbar for a more modern look (optional) */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e0a3c; /* Darker purple for track */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #a855f7; /* purple-500 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9333ea; /* purple-600 */
+    }
+
+    /* Typing cursor animation */
+    .typing-cursor {
+      display: inline-block;
+      width: 2px; /* Cursor width */
+      height: 1em; /* Match current text line height */
+      background-color: #c084fc; /* purple-400 */
+      margin-left: 4px; /* Space after text */
+      vertical-align: middle; /* Align cursor with text */
+      animation: blink-cursor 0.7s infinite;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Specific underline for Skills category titles */
+    .skills-category-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #a855f7; /* purple-500 */
+      transition: transform 0.5s ease-out;
+      transform: scaleX(1);
+    }
+
+    /* Liquid Background Animation */
+    #liquid-background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -10; /* Ensure it's behind all content */
+      background-color: #12032b; /* Fallback very dark purple, darker for contrast */
+    }
+
+    .liquid-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(75px); /* Increased blur for more liquid merging */
+    }
+
+    .blob-1 {
+      width: 50vw; 
+      height: 50vw;
+      left: -15vw;
+      top: -10vh;
+      background-color: rgba(85, 26, 139, 0.65); /* More intense mid-tone purple */
+      animation: animate-blob-1 28s infinite alternate ease-in-out; /* Faster */
+    }
+
+    .blob-2 {
+      width: 40vw; 
+      height: 40vw;
+      right: -20vw;
+      top: 5vh;
+      background-color: rgba(147, 51, 234, 0.55); /* Vibrant magenta-purple */
+      animation: animate-blob-2 32s infinite alternate ease-in-out; /* Faster */
+    }
+
+    .blob-3 {
+      width: 45vw; 
+      height: 45vw;
+      left: 15vw;
+      bottom: -20vh;
+      background-color: rgba(30, 5, 50, 0.8); /* Deep indigo-purple, darker */
+      animation: animate-blob-3 30s infinite alternate ease-in-out; /* Faster */
+    }
+    
+    .blob-4 {
+      width: 35vw; 
+      height: 35vw;
+      left: 55vw;
+      top: 25vh;
+      background-color: rgba(139, 92, 246, 0.6); /* Lighter lavender/violet - Increased alpha for brightness */
+      animation: animate-blob-4 34s infinite alternate ease-in-out; /* Faster */
+    }
+
+    @keyframes animate-blob-1 {
+      0% { transform: translate(calc(-5vw + var(--cursor-influence-x, 0px)), calc(-5vh + var(--cursor-influence-y, 0px))) scale(0.9) rotate(0deg); opacity: 0.55; }
+      33% { transform: translate(calc(25vw + var(--cursor-influence-x, 0px)), calc(18vh + var(--cursor-influence-y, 0px))) scale(1.25) rotate(130deg); opacity: 0.8; }
+      66% { transform: translate(calc(-18vw + var(--cursor-influence-x, 0px)), calc(28vh + var(--cursor-influence-y, 0px))) scale(0.75) rotate(250deg); opacity: 0.45; }
+      100% { transform: translate(calc(-5vw + var(--cursor-influence-x, 0px)), calc(-5vh + var(--cursor-influence-y, 0px))) scale(0.9) rotate(360deg); opacity: 0.55; }
+    }
+
+    @keyframes animate-blob-2 {
+      0% { transform: translate(calc(5vw + var(--cursor-influence-x, 0px)), calc(5vh + var(--cursor-influence-y, 0px))) scale(1.1) rotate(0deg); opacity: 0.5; }
+      33% { transform: translate(calc(-25vw + var(--cursor-influence-x, 0px)), calc(-13vh + var(--cursor-influence-y, 0px))) scale(0.8) rotate(-110deg); opacity: 0.75; }
+      66% { transform: translate(calc(18vw + var(--cursor-influence-x, 0px)), calc(23vh + var(--cursor-influence-y, 0px))) scale(1.3) rotate(-230deg); opacity: 0.4; }
+      100% { transform: translate(calc(5vw + var(--cursor-influence-x, 0px)), calc(5vh + var(--cursor-influence-y, 0px))) scale(1.1) rotate(-360deg); opacity: 0.5; }
+    }
+
+    @keyframes animate-blob-3 {
+      0% { transform: translate(calc(0vw + var(--cursor-influence-x, 0px)), calc(10vh + var(--cursor-influence-y, 0px))) scale(0.85) rotate(20deg); opacity: 0.6; }
+      33% { transform: translate(calc(22vw + var(--cursor-influence-x, 0px)), calc(-18vh + var(--cursor-influence-y, 0px))) scale(1.2) rotate(100deg); opacity: 0.4; }
+      66% { transform: translate(calc(-15vw + var(--cursor-influence-x, 0px)), calc(-8vh + var(--cursor-influence-y, 0px))) scale(0.9) rotate(200deg); opacity: 0.8; }
+      100% { transform: translate(calc(0vw + var(--cursor-influence-x, 0px)), calc(10vh + var(--cursor-influence-y, 0px))) scale(0.85) rotate(380deg); opacity: 0.6; }
+    }
+    
+    @keyframes animate-blob-4 {
+      0% { transform: translate(calc(-10vw + var(--cursor-influence-x, 0px)), calc(0vh + var(--cursor-influence-y, 0px))) scale(1.05) rotate(-30deg); opacity: 0.45; }
+      33% { transform: translate(calc(13vw + var(--cursor-influence-x, 0px)), calc(-18vh + var(--cursor-influence-y, 0px))) scale(0.7) rotate(-160deg); opacity: 0.7; }
+      66% { transform: translate(calc(-8vw + var(--cursor-influence-x, 0px)), calc(18vh + var(--cursor-influence-y, 0px))) scale(1.25) rotate(-280deg); opacity: 0.35; }
+      100% { transform: translate(calc(-10vw + var(--cursor-influence-x, 0px)), calc(0vh + var(--cursor-influence-y, 0px))) scale(1.05) rotate(-390deg); opacity: 0.45; }
+    }
+
+    /* Custom Cursor Styles - Gradient Aura */
+    #custom-cursor-aura, #custom-cursor-dot {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none; /* Crucial: allows clicking through the cursor */
+      left: 0;
+      top: 0;
+      z-index: 10000; /* Ensure cursor is on top of everything */
+    }
+
+    #custom-cursor-aura {
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, rgba(168, 85, 247, 0.15) 40%, rgba(126, 34, 206, 0.0) 70%);
+      animation: pulse-aura 3s infinite alternate ease-in-out;
+      transition: width 0.2s ease-out, height 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out, opacity 0.15s ease-out; /* Adjusted transform transition */
+      transform: translate(-50%, -50%); /* Initial centering */
+    }
+
+    @keyframes pulse-aura {
+      0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    #custom-cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #c084fc; /* purple-400 */
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.2s ease-out, opacity 0.15s ease-out; /* For scale on hover and click */
+      z-index: 10001; /* Dot on top of aura */
+    }
+
+    /* Cursor hover states - Enhanced */
+    #custom-cursor-aura.cursor-hover-link {
+      width: 70px; /* Slightly larger */
+      height: 70px;
+      background: radial-gradient(circle, rgba(200, 140, 255, 0.55) 0%, rgba(170, 90, 250, 0.35) 40%, rgba(130, 40, 210, 0.05) 70%);
+      transform: translate(-50%, -50%) scale(1.35) rotate(10deg); /* Adjusted scale and added rotation */
+      opacity: 1;
+    }
+
+    #custom-cursor-dot.cursor-hover-link {
+      transform: translate(-50%, -50%) scale(2.2); /* Make dot more prominent */
+    }
+
+
+    /* Cursor click feedback */
+    #custom-cursor-aura.cursor-clicked {
+      transform: translate(-50%, -50%) scale(0.7) !important; /* Override pulse and ensure centered */
+      opacity: 0.5 !important;
+    }
+    #custom-cursor-dot.cursor-clicked {
+      transform: translate(-50%, -50%) scale(0.6) !important;
+      opacity: 0.5 !important;
+    }
+
+    /* Click Burst Particles */
+    .click-particle {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      background-color: #c084fc; 
+      z-index: 10002; /* Above cursor dot */
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    @keyframes particle-burst {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--translateX)), calc(-50% + var(--translateY))) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Gentle Bob for Hero Chevron */
+    @keyframes gentle-bob {
+      0%, 100% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-10px); opacity: 1; }
+    }
+    .animate-gentle-bob {
+      animation: gentle-bob 2.2s infinite ease-in-out;
+    }
+
+    /* Skill Card Icon Hover */
+    .skill-card-icon-wrapper:hover svg {
+      transform: rotate(10deg) scale(1.15);
+      transition: transform 0.25s ease-out;
+    }
+    .skill-card-icon-wrapper svg { /* Smooth transition back */
+      transition: transform 0.25s ease-out;
+    }
+
+
+    /* Project Card Link Icon Hover */
+    .project-link:hover .project-link-icon-svg {
+      transform: translateX(4px) scale(1.05);
+    }
+    .project-link .project-link-icon-svg { /* Smooth transition back */
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Contact Social Icon Hover */
+    .contact-social-icon:hover svg {
+      transform: translateY(-4px) scale(1.15); /* Removed rotate(5deg) */
+      transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Elastic ease */
+    }
+     .contact-social-icon svg { /* Smooth transition back */
+      transition: transform 0.2s ease-out;
+    }
+
+
+    /* Entrance animations - base classes */
+    .reveal-fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition-property: opacity, transform;
+      transition-timing-function: ease-out;
+    }
+    .is-in-view.reveal-fade-in-up { /* This class will be added by react-intersection-observer */
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    
+    /* For Navbar mobile items */
+    .mobile-nav-item {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+    .mobile-nav-item-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-dom/client": "https://esm.sh/react-dom@^19.1.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@/components/Hero": "./components/Hero.tsx",
+    "react-intersection-observer": "https://esm.sh/react-intersection-observer@9"
+  }
+}
+</script>
+</head>
+<body class="text-slate-100 antialiased">
+  <div id="root"></div>
+  <script src="bundle.js"></script>
+  <div id="liquid-background-container">
+    <div class="liquid-blob blob-1"></div>
+    <div class="liquid-blob blob-2"></div>
+    <div class="liquid-blob blob-3"></div>
+    <div class="liquid-blob blob-4"></div>
+  </div>
+
+  <div id="custom-cursor-aura"></div>
+  <div id="custom-cursor-dot"></div>
+
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+
+  <script>
+    const cursorAura = document.getElementById('custom-cursor-aura'); 
+    const cursorDot = document.getElementById('custom-cursor-dot');
+    const liquidBackgroundContainer = document.getElementById('liquid-background-container');
+
+    if (cursorAura && cursorDot && liquidBackgroundContainer) { 
+      let mouseX = 0;
+      let mouseY = 0;
+      let dotX = 0;
+      let dotY = 0;
+
+      const stiffness = 0.18; 
+      const influenceStrength = 30;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        cursorAura.style.left = mouseX + 'px'; 
+        cursorAura.style.top = mouseY + 'px';  
+
+        const normX = (e.clientX / window.innerWidth - 0.5) * 2; 
+        const normY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        const blobInfluenceX = -normX * influenceStrength;
+        const blobInfluenceY = -normY * influenceStrength;
+        
+        liquidBackgroundContainer.style.setProperty('--cursor-influence-x', `${blobInfluenceX}px`);
+        liquidBackgroundContainer.style.setProperty('--cursor-influence-y', `${blobInfluenceY}px`);
+      });
+
+      function animateDot() {
+        const dx = mouseX - dotX;
+        const dy = mouseY - dotY;
+
+        if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+            dotX += dx * stiffness;
+            dotY += dy * stiffness;
+        } else {
+            dotX = mouseX;
+            dotY = mouseY;
+        }
+        
+        cursorDot.style.left = dotX + 'px';
+        cursorDot.style.top = dotY + 'px';
+        
+        requestAnimationFrame(animateDot);
+      }
+      animateDot();
+
+      const interactiveSelector = 'a, button, [role="button"], input, select, textarea, .hover-interactive';
+
+      document.body.addEventListener('mouseover', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+          cursorAura.classList.add('cursor-hover-link'); 
+          cursorDot.classList.add('cursor-hover-link');
+        }
+      });
+
+      document.body.addEventListener('mouseout', (e) => {
+        if (e.target.closest(interactiveSelector)) {
+          cursorAura.classList.remove('cursor-hover-link'); 
+          cursorDot.classList.remove('cursor-hover-link');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+          cursorAura.classList.add('cursor-clicked');
+          cursorDot.classList.add('cursor-clicked');
+
+          setTimeout(() => {
+              cursorAura.classList.remove('cursor-clicked');
+              cursorDot.classList.remove('cursor-clicked');
+          }, 150); 
+
+          const particleCount = 10;
+          const clickX = e.clientX;
+          const clickY = e.clientY;
+          const particleColors = ['rgba(192, 132, 252, 0.9)', 'rgba(168, 85, 247, 0.8)', 'rgba(147, 51, 234, 0.85)', 'rgba(126, 34, 206, 0.75)'];
+
+          for (let i = 0; i < particleCount; i++) {
+              const particle = document.createElement('div');
+              particle.classList.add('click-particle');
+              document.body.appendChild(particle);
+
+              const particleSize = Math.random() * 5 + 4; 
+              particle.style.width = `${particleSize}px`;
+              particle.style.height = `${particleSize}px`;
+              particle.style.left = `${clickX}px`;
+              particle.style.top = `${clickY}px`;
+              particle.style.backgroundColor = particleColors[Math.floor(Math.random() * particleColors.length)];
+
+              const angle = Math.random() * Math.PI * 2; 
+              const distance = Math.random() * 50 + 35;  
+              const translateX = Math.cos(angle) * distance;
+              const translateY = Math.sin(angle) * distance;
+
+              particle.style.setProperty('--translateX', `${translateX}px`);
+              particle.style.setProperty('--translateY', `${translateY}px`);
+
+              const animationDuration = Math.random() * 600 + 400; 
+              particle.style.animation = `particle-burst ${animationDuration}ms ease-out forwards`;
+              
+              particle.addEventListener('animationend', () => {
+                  particle.remove();
+              });
+          }
+      });
+    }
+  </script>
+</body>
+</html>
