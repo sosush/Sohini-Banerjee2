@@ -23678,8 +23678,8 @@
     {
       id: "proj1",
       title: "Portfolio Website",
-      description: "The one you are viewing right now.",
-      technologies: ["Python", "React", "Typescript", "HTML", "CSS", "API"],
+      description: "Another one that uses interactive vanta background.",
+      technologies: ["Jypescript", "HTML", "CSS"],
       repoUrl: "https://github.com/2S00B5/Sohini-Banerjee",
       liveUrl: "https://2s00b5.github.io/Sohini-Banerjee/"
     },
