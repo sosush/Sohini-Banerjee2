@@ -70,7 +70,7 @@ exports.projectsData = [
         id: "proj1",
         title: "Portfolio Website",
         description: "Another one that uses interactive vanta background.",
-        technologies: ["Jypescript", "HTML", "CSS"],
+        technologies: ["Javascript", "HTML", "CSS"],
         repoUrl: "https://github.com/2S00B5/Sohini-Banerjee",
         liveUrl: "https://2s00b5.github.io/Sohini-Banerjee/"
     },
