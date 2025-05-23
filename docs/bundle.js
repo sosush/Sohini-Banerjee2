@@ -23695,7 +23695,8 @@
       title: "Weather App",
       description: "An API integrated platform to give u your weather data.",
       technologies: ["HTML", "CSS", "Javascirpt", "NodeJS", "API"],
-      repoUrl: "https://github.com/2S00B5/Weather-app"
+      repoUrl: "https://github.com/2S00B5/Weather-app",
+      liveUrl: "https://weather-app-mjgu.vercel.app/"
     },
     {
       id: "proj4",
